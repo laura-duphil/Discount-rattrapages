@@ -85,15 +85,17 @@ public class DAO {
         /**
 	 * MAJ un enregistrement dans la table DISCOUNT_CODE
 	 * @param code la clé de l'enregistrement à supprimer
+         * @param taux
 	 * @return le nombre d'enregistrements supprimés (1 ou 0)
 	 * @throws java.sql.SQLException renvoyées par JDBC
 	 **/
 	public int majDiscountCode(String code, float taux) throws SQLException {
 		int result = 0;
-		String sql = "UPDATE DISCOUNT_CODE SET = ? WHERE DISCOUNT_CODE = ?";
+		String sql = "UPDATE DISCOUNT_CODE SET RATE = ? WHERE DISCOUNT_CODE = ?";
 		try (Connection connection = myDataSource.getConnection(); 
 		     PreparedStatement stmt = connection.prepareStatement(sql)) {
-			stmt.setString(1, code);
+			stmt.setFloat(1, taux);
+                        stmt.setString(2, code);
 			result = stmt.executeUpdate();
 		}
 		return result;
