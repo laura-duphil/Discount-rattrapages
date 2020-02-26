@@ -50,7 +50,7 @@ public class DiscountEditorController extends HttpServlet {
                                             request.setAttribute("message", "Code " + code + " Mis à jour : " + taux);
                                             request.setAttribute("codes", dao.allCodes());								
                                     } catch (SQLException e) {
-                                            request.setAttribute("message", "Impossible de mettre à jour " + code );
+                                            request.setAttribute("message", "Impossible de mettre à jour le taux " +taux +" du code " + code );
                                     }
                                     break;
 				case "DELETE": // Requête de suppression (vient du lien hypertexte)
